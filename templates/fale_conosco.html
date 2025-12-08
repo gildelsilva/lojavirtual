@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Fale Conosco</h2>
+<p>Envie-nos uma mensagem, que teremos o prazer em atendê-lo.</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock content %}    
