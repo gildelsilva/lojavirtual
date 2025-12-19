@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 # Create your models here.
 
@@ -15,13 +17,16 @@ class Categoria(models.Model):
 
     def __str__(self):
         return self.nome 
+    
+    def get_absolute_url(self):
+        return reverse('main:listar_produtos_por_categoria', args=[self.slug])
 
-TAMANHOS = (
-    ('P', 'Pequeno'),
-    ('M', 'Médio'),
-    ('G', 'Grande'),
-    ('GG', 'Extra Grande'),
-)
+# TAMANHOS = (
+#     ('P', 'Pequeno'),
+#     ('M', 'Médio'),
+#     ('G', 'Grande'),
+#     ('GG', 'Extra Grande'),
+# )
 
 class Produto(models.Model):
     categoria = models.ForeignKey(Categoria, related_name='produtos', null=True, on_delete=models.CASCADE)
@@ -33,7 +38,7 @@ class Produto(models.Model):
     disponivel = models.BooleanField(default=True)
     data_criacao = models.DateTimeField(auto_now_add=True)
     data_ultima_atualizacao = models.DateTimeField(auto_now=True)
-    tamanho = models.CharField(max_length=2, choices=TAMANHOS, default='M') 
+    #tamanho = models.CharField(max_length=2, choices=TAMANHOS, default='M') 
     imagem = models.ImageField(upload_to='imagens-produtos', blank=True)
 
     class Meta:
@@ -45,6 +50,9 @@ class Produto(models.Model):
 
     def __str__(self):
         return self.nome    
+    
+    def get_absolute_url(self):
+        return reverse('main:detalhes_produto', args=[self.id, self.slug])
 
     # def save(self, *args, **kwargs):
     #     print('O método save foi chamado')
