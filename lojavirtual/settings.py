@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
+    'carrinho.apps.CarrinhoConfig',
 ]
 
 MIDDLEWARE = [
@@ -199,3 +200,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_FALE_CONOSCO = 'gildelsilva@gmail.com'
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+#SESSION_COOKIE_AGE = 3600  # 1 hour in seconds
+
+ID_CARRINHO = 'carrinho'
