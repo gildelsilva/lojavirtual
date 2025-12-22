@@ -36,22 +36,20 @@
                             <hr>
 
                             <h3 class="text-primary my-3">R$ {{ produto.preco }}</h3>
-                            
+                                <form action="{% url 'carrinho:adicionar_ao_carrinho' produto.id %}" method="post">
+                                    {{form_produto_carrinho}}
+                                    {% csrf_token %}
+                                    <input type="submit" value="Adicionar ao Carrinho">
+                                </form>
                             <p class="mt-4">
                                 {{ produto.descricao|safe|linebreaksbr }}
                             </p>
-
-                            <div class="mt-4">
-                                <a href="#" class="btn btn-success btn-lg w-100">
-                                    Adicionar ao Carrinho
-                                </a>
-                            </div>
                         </div>
 
-                    </div> </div>
+                    </div> 
+                </div>
             </div>
         </div>
-
     </div>
 </div>
 {% endblock %}
