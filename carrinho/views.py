@@ -7,7 +7,6 @@ from .carrinho import Carrinho
 # Create your views here.
 
 @require_POST
-
 def adicionar_ao_carrinho(request, id_produto):
     carrinho = Carrinho(request)
     produto = get_object_or_404(Produto, id=id_produto)
