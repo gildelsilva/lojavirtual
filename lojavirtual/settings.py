@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'carrinho.apps.CarrinhoConfig',
+    'pedidos.apps.PedidosConfig',
 ]
 
 MIDDLEWARE = [
@@ -91,6 +92,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'carrinho.context_processors.carrinho',  # Adiciona o context processor do carrinho
             ],
         },
     },

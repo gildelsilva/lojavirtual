@@ -33,9 +33,9 @@ class Carrinho:
             self.salvar()
     
     def limpar_carrinho(self):
-        for key in self.session.keys():
-                del self.session[key]
-        self.session.modified = True
+        for key in list(self.carrinho.keys()):
+            del self.carrinho[key]
+        self.salvar()
 
     def __iter__(self):
         id_produtos = self.carrinho.keys()
